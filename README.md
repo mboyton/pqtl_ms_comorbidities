@@ -145,7 +145,3 @@ SciViews
 File paths in the scripts are provided as **placeholders** and should be updated to point to local data files.
 
 ---
-
-# Citation
-
-If using this code, please cite the associated manuscript describing this analysis.
