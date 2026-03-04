@@ -23,14 +23,7 @@ The analysis consists of three main stages.
 
 ## 1. Proteome-wide Mendelian randomisation
 
-Proteome-wide two-sample Mendelian randomisation is performed using **cis-acting plasma pQTLs** as instruments to estimate the causal effect of circulating proteins on MS risk.
-
-Key steps include:
-
-- formatting pQTL exposure data
-- harmonising exposure and outcome alleles
-- performing inverse variance weighted (IVW) Mendelian randomisation
-- applying false discovery rate (FDR) correction across proteins
+Proteome-wide two-sample Mendelian randomisation is performed using **cis-pQTLs** as instruments to estimate the causal effect of circulating plasma proteins on MS risk.
 
 Proteins with **FDR-adjusted p < 0.05** are prioritised for downstream analyses.
 
@@ -44,7 +37,7 @@ pqtl_ms_and_comorbidities_mendelian_randomisation.R
 
 ## 2. Cross-phenotype Mendelian randomisation
 
-Proteins identified in the primary MS MR screen are tested against six clinically relevant comorbid conditions to evaluate potential pleiotropic effects.
+Proteins identified in the primary MS MR screen are tested against six clinically relevant comorbid conditions.
 
 Comorbid outcomes analysed:
 
@@ -75,7 +68,7 @@ Posterior probabilities are estimated for five hypotheses:
 | H3 | Both traits associated but with distinct causal variants |
 | H4 | Shared causal variant |
 
-Strong evidence of colocalisation is defined as:
+Strong evidence of colocalisation in our analyses is defined as:
 
 ```
 PP.H4 > 0.8
@@ -95,15 +88,15 @@ colocalisation_decode_pqtl_ms.R
 
 **deCODE genetics plasma pQTL dataset**
 
-Ferkingstad et al. (2021)  
-*Large-scale integration of the plasma proteome with genetics and disease*  
-Nature Genetics
+Ferkingstad E, Sulem P, Atlason BA, et al. Large-scale integration of the plasma proteome with genetics and disease. Nat Genet. Dec 2021;53(12):1712-1721. doi:10.1038/s41588-021-00978-w
 
 ---
 
 ## Multiple sclerosis GWAS
 
 International Multiple Sclerosis Genetics Consortium (IMSGC)
+
+Patsopoulos NA, Baranzini SE, et al. Multiple sclerosis genomic map implicates peripheral immune cells and microglia in susceptibility. Science. 2019;365(6460):eaav7188. doi:10.1126/science.aav7188
 
 OpenGWAS dataset:
 
@@ -130,7 +123,7 @@ OpenGWAS datasets used for cross-trait MR analyses:
 
 # Software
 
-Analyses were conducted using **R (≥ 4.3)**.
+All analyses for the accompanying manuscript were conducted using **R (≥ 4.3)** on the University of Bristol's High Performance Computing cluster.
 
 Required R packages:
 
@@ -150,26 +143,6 @@ SciViews
 # Running the analysis
 
 File paths in the scripts are provided as **placeholders** and should be updated to point to local data files.
-
-Typical workflow:
-
-```
-1. Run pqtl_ms_and_comorbidities_mendelian_randomisation.R
-   - performs proteome-wide MR
-   - identifies significant proteins
-   - performs comorbidity MR analyses
-
-2. Run colocalisation_decode_pqtl_ms.R
-   - performs ABF colocalisation for prioritised proteins
-```
-
----
-
-# Reproducibility notes
-
-- Analyses were originally conducted on a **high-performance computing cluster**.
-- Scripts are designed to be run sequentially.
-- Some datasets (e.g. deCODE pQTL summary statistics) may require controlled access.
 
 ---
 
