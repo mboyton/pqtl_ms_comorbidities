@@ -11,6 +11,8 @@ The analysis integrates **plasma protein quantitative trait loci (pQTL)** data w
 ```
 .
 ├── pqtl_ms_and_comorbidities_mendelian_randomisation.R
+├── figure1.R
+├── figure2.R
 ├── colocalisation_decode_pqtl_ms.R
 └── README.md
 ```
